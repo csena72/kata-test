@@ -6,9 +6,17 @@ class DuplicateRemover
 {
     public function __invoke(array $input): array
     {
-        /**
-         * @todo
-         */
-        return [];
+        $uniqueValues = [];
+                
+        $addedValues = [];
+        
+        foreach ($input as $element) {      
+            if (!isset($addedValues[$element])) {
+                $uniqueValues[] = $element;
+                $addedValues[$element] = true;
+            }
+        }
+        
+        return $uniqueValues;
     }
 }
